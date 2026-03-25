@@ -1,1 +1,54 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>POSKEN Investment</title><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"><style>body { margin:0; font-family: 'Montserrat', sans-serif; }header {background:#1b3d2f;color:white;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;}nav a {color:white;margin:0 10px;text-decoration:none;font-weight:600;cursor:pointer;}nav a:hover { color:#c9a66b; }.section { display:none; padding:40px; }.active { display:block; }h1, h2 { color:#1b3d2f; }.hero {background:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e') center/cover;color:white;text-align:center;padding:100px 20px;}.services, .team {display:grid;grid-template-columns: repeat(auto-fit, minmax(250px,1fr));gap:20px;}.card {border:1px solid #ddd;border-radius:10px;padding:20px;text-align:center;}input, textarea {width:100%;padding:10px;margin:10px 0;border:1px solid #ccc;border-radius:5px;}button {background:#1b3d2f;color:white;border:none;padding:10px 20px;cursor:pointer;}footer {background:#1b3d2f;color:white;text-align:center;padding:20px;}</style></head><body><header><h2>POSKEN</h2><nav><a onclick="showSection('home')">Home</a><a onclick="showSection('about')">About Us</a><a onclick="showSection('services')">Services</a><a onclick="showSection('team')">Our Team</a><a onclick="showSection('enquiry')">Enquiry</a><a onclick="showSection('contact')">Contact</a></nav></header><div id="home" class="section active"><div class="hero"><h1>POSKEN INVESTMENT</h1><p>Timber • Hardware • Transport</p></div></div><div id="about" class="section"><h2>About Us</h2><p>POSKEN Investment is a trusted company specializing in timber supply, hardware solutions, and transport services. We are committed to quality, reliability, and customer satisfaction across Zambia.</p></div><div id="services" class="section"><h2>Our Services</h2><div class="services"><div class="card"><h3>Timber</h3><p>Quality timber for construction.</p></div><div class="card"><h3>Hardware</h3><p>Reliable building materials.</p></div><div class="card"><h3>Transport</h3><p>Efficient delivery services.</p></div></div></div><div id="team" class="section"><h2>Our Team</h2><div class="team"><div class="card"><h3>Sydney Nkaka</h3><p>Managing Director</p></div><div class="card"><h3>Team Member</h3><p>Operations</p></div></div></div><div id="enquiry" class="section"><h2>Enquiry Form</h2><input type="text" placeholder="Your Name"><input type="email" placeholder="Your Email"><textarea placeholder="Your Message"></textarea><button>Submit</button></div><div id="contact" class="section"><h2>Contact Us</h2><p>Email: poskeninvestment@gmail.com</p><p>Location: Kitwe, Zambia</p></div><footer><p>© 2026 POSKEN Investment</p></footer><script>function showSection(sectionId) {document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));document.getElementById(sectionId).classList.add('active');}</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h1>Welcome to Our Company</h1>
+            <p>Your partner in excellence.</p>
+            <button class="cta-button">Learn More</button>
+        </section>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>We are dedicated to providing top-notch services to our clients.</p>
+        </section>
+        <section id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Consulting</li>
+                <li>Implementation</li>
+                <li>Support</li>
+            </ul>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required />
+                <input type="email" placeholder="Your Email" required />
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Your Company Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>
