@@ -23,7 +23,7 @@ body {
 /* NAVBAR */
 header {
     background: #0b3d2e;
-    padding: 15px 50px;
+    padding: 15px 30px;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -33,6 +33,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 nav h1 {
@@ -43,6 +44,7 @@ nav h1 {
 nav ul {
     display: flex;
     list-style: none;
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -59,6 +61,21 @@ nav ul li a:hover {
     color: #c49a3a;
 }
 
+/* Hamburger Menu for Mobile */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background: #fff;
+    margin: 4px 0;
+    border-radius: 3px;
+}
+
 /* HERO */
 .hero {
     height: 90vh;
@@ -68,7 +85,7 @@ nav ul li a:hover {
     background-position: center;
     display: flex;
     align-items: center;
-    padding: 0 50px;
+    padding: 0 30px;
     color: #fff;
 }
 
@@ -93,36 +110,11 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-/* SECTION */
-section {
-    padding: 60px 50px;
-}
-
-/* SERVICES */
-.services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.card {
-    background: #fff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-}
-
-.card h3 {
-    margin-bottom: 10px;
-    color: #0b3d2e;
-}
-
 /* ABOUT */
+section {
+    padding: 60px 30px;
+}
+
 .about {
     display: flex;
     flex-wrap: wrap;
@@ -133,6 +125,37 @@ section {
     width: 100%;
     max-width: 500px;
     border-radius: 10px;
+}
+
+/* SERVICES - Carousel */
+.services-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.services-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.card {
+    min-width: 300px;
+    margin-right: 20px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #0b3d2e;
 }
 
 /* TEAM */
@@ -180,11 +203,17 @@ footer {
 }
 
 /* RESPONSIVE */
-@media(max-width: 768px) {
-    .hero h2 {
-        font-size: 32px;
-    }
+@media(max-width: 1024px){
+    .hero h2 { font-size: 36px; }
+    nav ul { display: none; width: 100%; flex-direction: column; margin-top: 10px; }
+    nav ul.active { display: flex; }
+    .hamburger { display: flex; }
 }
+
+@media(max-width: 768px){
+    .hero h2 { font-size: 28px; }
+}
+
 </style>
 </head>
 
@@ -193,7 +222,12 @@ footer {
 <header>
     <nav>
         <h1>POSKEN</h1>
-        <ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#team">Team</a></li>
@@ -224,18 +258,24 @@ footer {
 
 <section id="services">
     <h2>Our Services</h2>
-    <div class="services">
-        <div class="card">
-            <h3>Timber Supply</h3>
-            <p>High-quality logs and processed wood materials.</p>
-        </div>
-        <div class="card">
-            <h3>Hardware Supply</h3>
-            <p>Construction tools and materials for all projects.</p>
-        </div>
-        <div class="card">
-            <h3>Transport Services</h3>
-            <p>Reliable delivery and logistics across the region.</p>
+    <div class="services-container">
+        <div class="services-slider" id="services-slider">
+            <div class="card">
+                <h3>Timber Supply</h3>
+                <p>High-quality logs and processed wood materials.</p>
+            </div>
+            <div class="card">
+                <h3>Hardware Supply</h3>
+                <p>Construction tools and materials for all projects.</p>
+            </div>
+            <div class="card">
+                <h3>Transport Services</h3>
+                <p>Reliable delivery and logistics across the region.</p>
+            </div>
+            <div class="card">
+                <h3>Consulting</h3>
+                <p>Expert guidance for construction and logistics projects.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -267,6 +307,27 @@ footer {
 <footer>
     <p>© 2026 POSKEN Investment | Timber • Hardware • Transport</p>
 </footer>
+
+<script>
+// Hamburger toggle
+function toggleMenu(){
+    document.getElementById('nav-menu').classList.toggle('active');
+}
+
+// Services Slider Animation
+let slider = document.getElementById('services-slider');
+let cards = slider.children;
+let index = 0;
+
+function slideServices(){
+    index++;
+    if(index >= cards.length) index = 0;
+    let offset = -index * (cards[0].offsetWidth + 20); // 20px gap
+    slider.style.transform = `translateX(${offset}px)`;
+}
+
+setInterval(slideServices, 3000);
+</script>
 
 </body>
 </html>
