@@ -8,325 +8,257 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Poppins,sans-serif;color:#333;background:#fff}
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #f9f9f9;
-    color: #333;
+/* HEADER */
+header{
+  background:#0b3d2e;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
-
-/* NAVBAR */
-header {
-    background: #0b3d2e;
-    padding: 15px 30px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
 }
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+nav h1{color:#fff}
+nav ul{
+  display:flex;
+  list-style:none;
 }
-
-nav h1 {
-    color: #fff;
-    font-size: 24px;
+nav ul li{margin-left:20px}
+nav ul li a{
+  color:#fff;
+  text-decoration:none;
 }
-
-nav ul {
-    display: flex;
-    list-style: none;
-    flex-wrap: wrap;
-}
-
-nav ul li {
-    margin-left: 25px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-nav ul li a:hover {
-    color: #c49a3a;
-}
-
-/* Hamburger Menu for Mobile */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.hamburger span {
-    height: 3px;
-    width: 25px;
-    background: #fff;
-    margin: 4px 0;
-    border-radius: 3px;
+.hamburger{display:none;cursor:pointer}
+.hamburger div{
+  width:25px;height:3px;background:#fff;margin:5px;
 }
 
 /* HERO */
-.hero {
-    height: 90vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('https://images.unsplash.com/photo-1503387762-592deb58ef4e');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    padding: 0 30px;
-    color: #fff;
+.hero{
+  height:100vh;
+  background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+  url('https://images.unsplash.com/photo-1503387762-592deb58ef4e');
+  background-size:cover;
+  display:flex;
+  align-items:center;
+  padding:0 30px;
+  color:#fff;
+}
+.hero h2{font-size:50px;margin-bottom:20px}
+.btn{
+  background:#c49a3a;
+  padding:12px 25px;
+  color:#fff;
+  text-decoration:none;
 }
 
-.hero-text {
-    max-width: 600px;
-}
-
-.hero h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    margin-bottom: 20px;
-}
-
-.btn {
-    background: #c49a3a;
-    padding: 12px 25px;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-}
+/* SECTION */
+section{padding:80px 30px}
+h2{margin-bottom:20px;color:#0b3d2e}
 
 /* ABOUT */
-section {
-    padding: 60px 30px;
+.about{
+  display:flex;
+  flex-wrap:wrap;
+  gap:30px;
 }
+.about img{width:100%;max-width:500px;border-radius:10px}
 
-.about {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+/* SERVICES SLIDER */
+.services-container{overflow:hidden}
+.services-slider{
+  display:flex;
+  transition:0.5s;
 }
-
-.about img {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
+.card{
+  min-width:300px;
+  margin-right:20px;
+  padding:25px;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
+.card:hover{transform:translateY(-10px)}
+.card h3{color:#0b3d2e}
 
-/* SERVICES - Carousel */
-.services-container {
-    overflow: hidden;
-    position: relative;
+/* STATS */
+.stats{
+  display:flex;
+  justify-content:space-around;
+  background:#0b3d2e;
+  color:#fff;
+  text-align:center;
 }
+.stats div h3{font-size:40px}
 
-.services-slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+/* WHY US */
+.why{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
 }
-
-.card {
-    min-width: 300px;
-    margin-right: 20px;
-    background: #fff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    flex-shrink: 0;
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-}
-
-.card h3 {
-    margin-bottom: 10px;
-    color: #0b3d2e;
+.why div{
+  background:#f9f9f9;
+  padding:20px;
 }
 
 /* TEAM */
-.team {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+.team{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
 }
-
-.team-card {
-    text-align: center;
-}
-
-.team-card img {
-    width: 100%;
-    border-radius: 50%;
-}
+.team img{width:100%;border-radius:50%}
 
 /* CONTACT */
-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
+form{
+  max-width:400px;
+  display:flex;
+  flex-direction:column;
 }
-
-input, textarea {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-
-button {
-    background: #0b3d2e;
-    color: #fff;
-    padding: 10px;
-    border: none;
-}
+input,textarea{margin:10px 0;padding:10px}
 
 /* FOOTER */
-footer {
-    background: #0b3d2e;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
+footer{
+  background:#0b3d2e;
+  color:#fff;
+  text-align:center;
+  padding:20px;
 }
 
 /* RESPONSIVE */
-@media(max-width: 1024px){
-    .hero h2 { font-size: 36px; }
-    nav ul { display: none; width: 100%; flex-direction: column; margin-top: 10px; }
-    nav ul.active { display: flex; }
-    .hamburger { display: flex; }
+@media(max-width:900px){
+  nav ul{display:none;flex-direction:column}
+  nav ul.active{display:flex}
+  .hamburger{display:block}
 }
-
-@media(max-width: 768px){
-    .hero h2 { font-size: 28px; }
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-    <nav>
-        <h1>POSKEN</h1>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul id="nav-menu">
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<nav>
+<h1>POSKEN</h1>
+
+<div class="hamburger" onclick="toggleMenu()">
+<div></div><div></div><div></div>
+</div>
+
+<ul id="menu">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#team">Team</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-    <div class="hero-text">
-        <h2>Reliable Timber, Hardware & Transport Solutions</h2>
-        <p>POSKEN Investment delivers high-quality materials and logistics services across Zambia.</p>
-        <a href="#contact" class="btn">Get in Touch</a>
-    </div>
+<div>
+<h2>Timber • Hardware • Transport Solutions</h2>
+<p>Delivering quality materials and logistics across Zambia</p>
+<a href="#contact" class="btn">Contact Us</a>
+</div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
-    <h2>About Us</h2>
-    <div class="about">
-        <img src="https://images.unsplash.com/photo-1581090700227-1e8a0fcb1b4e">
-        <p>
-            POSKEN Investment specializes in timber supply, hardware distribution,
-            and transport services. With a commitment to quality and efficiency,
-            we provide reliable solutions for construction and logistics needs.
-        </p>
-    </div>
+<h2>About Us</h2>
+<div class="about">
+<img src="https://images.unsplash.com/photo-1581090700227-1e8a0fcb1b4e">
+<p>POSKEN Investment provides reliable timber supply, hardware materials and transport services. We combine quality, efficiency and trust to serve construction and logistics needs.</p>
+</div>
 </section>
 
+<!-- SERVICES -->
 <section id="services">
-    <h2>Our Services</h2>
-    <div class="services-container">
-        <div class="services-slider" id="services-slider">
-            <div class="card">
-                <h3>Timber Supply</h3>
-                <p>High-quality logs and processed wood materials.</p>
-            </div>
-            <div class="card">
-                <h3>Hardware Supply</h3>
-                <p>Construction tools and materials for all projects.</p>
-            </div>
-            <div class="card">
-                <h3>Transport Services</h3>
-                <p>Reliable delivery and logistics across the region.</p>
-            </div>
-            <div class="card">
-                <h3>Consulting</h3>
-                <p>Expert guidance for construction and logistics projects.</p>
-            </div>
-        </div>
-    </div>
+<h2>Our Services</h2>
+<div class="services-container">
+<div class="services-slider" id="slider">
+<div class="card"><h3>Timber Supply</h3><p>Quality wood materials</p></div>
+<div class="card"><h3>Hardware</h3><p>Construction tools & materials</p></div>
+<div class="card"><h3>Transport</h3><p>Reliable logistics services</p></div>
+<div class="card"><h3>Consulting</h3><p>Project advisory services</p></div>
+</div>
+</div>
 </section>
 
+<!-- STATS -->
+<section class="stats">
+<div><h3 id="c1">0</h3><p>Projects</p></div>
+<div><h3 id="c2">0</h3><p>Clients</p></div>
+<div><h3 id="c3">0</h3><p>Years</p></div>
+</section>
+
+<!-- WHY US -->
+<section>
+<h2>Why Choose Us</h2>
+<div class="why">
+<div><h3>Quality</h3><p>Premium materials</p></div>
+<div><h3>Reliability</h3><p>Trusted service</p></div>
+<div><h3>Efficiency</h3><p>Fast delivery</p></div>
+</div>
+</section>
+
+<!-- TEAM -->
 <section id="team">
-    <h2>Our Team</h2>
-    <div class="team">
-        <div class="team-card">
-            <img src="https://randomuser.me/api/portraits/men/1.jpg">
-            <h4>Director</h4>
-        </div>
-        <div class="team-card">
-            <img src="https://randomuser.me/api/portraits/women/2.jpg">
-            <h4>Operations Manager</h4>
-        </div>
-    </div>
+<h2>Our Team</h2>
+<div class="team">
+<div><img src="https://randomuser.me/api/portraits/men/1.jpg"><p>Director</p></div>
+<div><img src="https://randomuser.me/api/portraits/women/2.jpg"><p>Manager</p></div>
+</div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
-    <h2>Contact Us</h2>
-    <form>
-        <input type="text" placeholder="Your Name">
-        <input type="email" placeholder="Email">
-        <textarea placeholder="Message"></textarea>
-        <button>Send Message</button>
-    </form>
+<h2>Contact</h2>
+<form>
+<input placeholder="Name">
+<input placeholder="Email">
+<textarea placeholder="Message"></textarea>
+<button>Send</button>
+</form>
 </section>
 
 <footer>
-    <p>© 2026 POSKEN Investment | Timber • Hardware • Transport</p>
+<p>© 2026 POSKEN Investment</p>
 </footer>
 
 <script>
-// Hamburger toggle
 function toggleMenu(){
-    document.getElementById('nav-menu').classList.toggle('active');
+document.getElementById('menu').classList.toggle('active');
 }
 
-// Services Slider Animation
-let slider = document.getElementById('services-slider');
-let cards = slider.children;
-let index = 0;
+/* SERVICES SLIDER */
+let slider=document.getElementById('slider');
+let i=0;
+setInterval(()=>{
+i++;
+if(i>=slider.children.length)i=0;
+slider.style.transform=`translateX(-${i*320}px)`
+},3000);
 
-function slideServices(){
-    index++;
-    if(index >= cards.length) index = 0;
-    let offset = -index * (cards[0].offsetWidth + 20); // 20px gap
-    slider.style.transform = `translateX(${offset}px)`;
+/* COUNTERS */
+function count(id,max){
+let el=document.getElementById(id);
+let i=0;
+let interval=setInterval(()=>{
+i++;
+el.innerText=i;
+if(i>=max)clearInterval(interval);
+},30);
 }
-
-setInterval(slideServices, 3000);
+count("c1",120);
+count("c2",80);
+count("c3",10);
 </script>
 
 </body>
