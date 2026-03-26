@@ -9,7 +9,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Poppins,sans-serif;color:#333;background:#fff}
+body{font-family:Poppins,sans-serif}
 
 /* HEADER */
 header{
@@ -30,107 +30,108 @@ nav ul{
   list-style:none;
 }
 nav ul li{margin-left:20px}
-nav ul li a{
-  color:#fff;
-  text-decoration:none;
-}
+nav ul li a{color:#fff;text-decoration:none}
 .hamburger{display:none;cursor:pointer}
-.hamburger div{
-  width:25px;height:3px;background:#fff;margin:5px;
-}
+.hamburger div{width:25px;height:3px;background:#fff;margin:5px}
 
 /* HERO */
 .hero{
+  position:relative;
   height:100vh;
-  background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-  url('https://images.unsplash.com/photo-1503387762-592deb58ef4e');
+  overflow:hidden;
+}
+.hero-slide{
+  position:absolute;
+  width:100%;
+  height:100%;
   background-size:cover;
-  display:flex;
-  align-items:center;
-  padding:0 30px;
-  color:#fff;
+  background-position:center;
+  opacity:0;
+  transition:1.5s;
 }
-.hero h2{font-size:50px;margin-bottom:20px}
-.btn{
-  background:#c49a3a;
-  padding:12px 25px;
-  color:#fff;
-  text-decoration:none;
+.hero-slide.active{opacity:1}
+.hero::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.6);
 }
+.hero-content{
+  position:relative;
+  z-index:2;
+  color:#fff;
+  top:50%;
+  transform:translateY(-50%);
+  padding:0 40px;
+}
+.hero h2{font-size:50px;margin-bottom:10px}
+.btn{background:#c49a3a;padding:10px 20px;color:#fff;text-decoration:none}
 
-/* SECTION */
-section{padding:80px 30px}
-h2{margin-bottom:20px;color:#0b3d2e}
-
-/* ABOUT */
-.about{
-  display:flex;
-  flex-wrap:wrap;
+/* SERVICES */
+.services-section{padding:80px 40px;background:#f9f9f9}
+.section-title{text-align:center;margin-bottom:40px;color:#0b3d2e}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:30px;
 }
-.about img{width:100%;max-width:500px;border-radius:10px}
-
-/* SERVICES SLIDER */
-.services-container{overflow:hidden}
-.services-slider{
-  display:flex;
-  transition:0.5s;
+.service-card{
+  height:350px;
+  overflow:hidden;
+  border-radius:15px;
+  position:relative;
+  animation:zoomSlow 6s infinite alternate;
 }
-.card{
-  min-width:300px;
-  margin-right:20px;
-  padding:25px;
-  background:#fff;
-  border-radius:10px;
-  box-shadow:0 5px 20px rgba(0,0,0,.1);
+.service-img{
+  width:100%;height:100%;
+  background-size:cover;
+  transition:.6s;
 }
-.card:hover{transform:translateY(-10px)}
-.card h3{color:#0b3d2e}
-
-/* STATS */
-.stats{
-  display:flex;
-  justify-content:space-around;
-  background:#0b3d2e;
+.service-card:hover .service-img{transform:scale(1.2)}
+.service-content{
+  position:absolute;
+  bottom:0;
   color:#fff;
-  text-align:center;
+  padding:20px;
+  background:linear-gradient(transparent,black);
 }
-.stats div h3{font-size:40px}
 
-/* WHY US */
-.why{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+/* ZOOM */
+@keyframes zoomSlow{
+  from{transform:scale(1)}
+  to{transform:scale(1.05)}
 }
-.why div{
+
+/* TIMBER */
+.timber-section{padding:80px 40px}
+.timber-wrapper{position:relative;display:flex;align-items:center}
+.timber-slider{
+  display:flex;
+  overflow:hidden;
+  gap:20px;
+  scroll-behavior:smooth;
+}
+.timber-card{
+  min-width:250px;
   background:#f9f9f9;
-  padding:20px;
+  border-radius:10px;
+  overflow:hidden;
 }
-
-/* TEAM */
-.team{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-}
-.team img{width:100%;border-radius:50%}
-
-/* CONTACT */
-form{
-  max-width:400px;
-  display:flex;
-  flex-direction:column;
-}
-input,textarea{margin:10px 0;padding:10px}
-
-/* FOOTER */
-footer{
+.timber-card img{width:100%;height:180px;object-fit:cover}
+.timber-card h3{text-align:center;padding:10px}
+.nav-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
   background:#0b3d2e;
   color:#fff;
-  text-align:center;
-  padding:20px;
+  border:none;
+  padding:10px;
+  cursor:pointer;
 }
+.left{left:-10px}
+.right{right:-10px}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -152,113 +153,94 @@ footer{
 </div>
 
 <ul id="menu">
-<li><a href="#about">About</a></li>
+<li><a href="#">Home</a></li>
 <li><a href="#services">Services</a></li>
-<li><a href="#team">Team</a></li>
-<li><a href="#contact">Contact</a></li>
+<li><a href="#timber">Timber</a></li>
 </ul>
 </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-<div>
-<h2>Timber • Hardware • Transport Solutions</h2>
-<p>Delivering quality materials and logistics across Zambia</p>
-<a href="#contact" class="btn">Contact Us</a>
-</div>
-</section>
 
-<!-- ABOUT -->
-<section id="about">
-<h2>About Us</h2>
-<div class="about">
-<img src="https://images.unsplash.com/photo-1581090700227-1e8a0fcb1b4e">
-<p>POSKEN Investment provides reliable timber supply, hardware materials and transport services. We combine quality, efficiency and trust to serve construction and logistics needs.</p>
+<div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e')"></div>
+<div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1513828583688-c52646db42da')"></div>
+<div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8')"></div>
+
+<div class="hero-content">
+<h2 id="title">Reliable Timber Solutions</h2>
+<p id="text">High-quality timber supply across Zambia</p>
+<a href="#" class="btn">Get Started</a>
 </div>
+
 </section>
 
 <!-- SERVICES -->
-<section id="services">
-<h2>Our Services</h2>
-<div class="services-container">
-<div class="services-slider" id="slider">
-<div class="card"><h3>Timber Supply</h3><p>Quality wood materials</p></div>
-<div class="card"><h3>Hardware</h3><p>Construction tools & materials</p></div>
-<div class="card"><h3>Transport</h3><p>Reliable logistics services</p></div>
-<div class="card"><h3>Consulting</h3><p>Project advisory services</p></div>
-</div>
-</div>
-</section>
+<section id="services" class="services-section">
+<h2 class="section-title">Our Services</h2>
 
-<!-- STATS -->
-<section class="stats">
-<div><h3 id="c1">0</h3><p>Projects</p></div>
-<div><h3 id="c2">0</h3><p>Clients</p></div>
-<div><h3 id="c3">0</h3><p>Years</p></div>
-</section>
+<div class="services-grid">
 
-<!-- WHY US -->
-<section>
-<h2>Why Choose Us</h2>
-<div class="why">
-<div><h3>Quality</h3><p>Premium materials</p></div>
-<div><h3>Reliability</h3><p>Trusted service</p></div>
-<div><h3>Efficiency</h3><p>Fast delivery</p></div>
+<div class="service-card">
+<div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e')"></div>
+<div class="service-content"><h3>Timber Supply</h3></div>
+</div>
+
+<div class="service-card">
+<div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1581092160607-ee22621dd758')"></div>
+<div class="service-content"><h3>Hardware</h3></div>
+</div>
+
+<div class="service-card">
+<div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1502877338535-766e1452684a')"></div>
+<div class="service-content"><h3>Transport</h3></div>
+</div>
+
 </div>
 </section>
 
-<!-- TEAM -->
-<section id="team">
-<h2>Our Team</h2>
-<div class="team">
-<div><img src="https://randomuser.me/api/portraits/men/1.jpg"><p>Director</p></div>
-<div><img src="https://randomuser.me/api/portraits/women/2.jpg"><p>Manager</p></div>
+<!-- TIMBER -->
+<section id="timber" class="timber-section">
+<h2 class="section-title">Types of Timber</h2>
+
+<div class="timber-wrapper">
+<button class="nav-btn left" onclick="left()">❮</button>
+
+<div class="timber-slider" id="slider">
+<div class="timber-card"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e"><h3>Pine</h3></div>
+<div class="timber-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"><h3>Hardwood</h3></div>
+<div class="timber-card"><img src="https://images.unsplash.com/photo-1599493758267-c6c884c7071f"><h3>Teak</h3></div>
+<div class="timber-card"><img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed"><h3>Mahogany</h3></div>
+</div>
+
+<button class="nav-btn right" onclick="right()">❯</button>
 </div>
 </section>
-
-<!-- CONTACT -->
-<section id="contact">
-<h2>Contact</h2>
-<form>
-<input placeholder="Name">
-<input placeholder="Email">
-<textarea placeholder="Message"></textarea>
-<button>Send</button>
-</form>
-</section>
-
-<footer>
-<p>© 2026 POSKEN Investment</p>
-</footer>
 
 <script>
+// MENU
 function toggleMenu(){
-document.getElementById('menu').classList.toggle('active');
+document.getElementById("menu").classList.toggle("active");
 }
 
-/* SERVICES SLIDER */
-let slider=document.getElementById('slider');
+// HERO SLIDER
+let slides=document.querySelectorAll(".hero-slide");
+let titles=["Reliable Timber Solutions","Quality Hardware","Transport Services"];
+let texts=["High-quality timber supply","All building materials","Fast logistics"];
+
 let i=0;
 setInterval(()=>{
-i++;
-if(i>=slider.children.length)i=0;
-slider.style.transform=`translateX(-${i*320}px)`
-},3000);
+slides.forEach(s=>s.classList.remove("active"));
+i++; if(i>=slides.length)i=0;
+slides[i].classList.add("active");
+document.getElementById("title").innerText=titles[i];
+document.getElementById("text").innerText=texts[i];
+},5000);
 
-/* COUNTERS */
-function count(id,max){
-let el=document.getElementById(id);
-let i=0;
-let interval=setInterval(()=>{
-i++;
-el.innerText=i;
-if(i>=max)clearInterval(interval);
-},30);
-}
-count("c1",120);
-count("c2",80);
-count("c3",10);
+// TIMBER SLIDER
+const s=document.getElementById("slider");
+function left(){s.scrollBy({left:-300,behavior:"smooth"})}
+function right(){s.scrollBy({left:300,behavior:"smooth"})}
 </script>
 
 </body>
