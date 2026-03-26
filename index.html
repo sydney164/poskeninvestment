@@ -8,136 +8,133 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+--primary:#0b3d2e;
+--accent:#c49a3a;
+--light:#f5f7f6;
+--dark:#222;
+}
+
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Poppins,sans-serif}
+body{font-family:Poppins,sans-serif;line-height:1.6;color:var(--dark)}
+
+section{padding:80px 20px}
+.container{max-width:1200px;margin:auto}
 
 /* HEADER */
 header{
-  background:#0b3d2e;
-  position:sticky;
-  top:0;
-  z-index:1000;
+background:var(--primary);
+position:sticky;top:0;z-index:1000;
 }
 nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 30px;
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 20px;
 }
-nav h1{color:#fff}
-nav ul{
-  display:flex;
-  list-style:none;
-}
+.logo{color:#fff;font-weight:700;font-size:22px}
+nav ul{display:flex;list-style:none}
 nav ul li{margin-left:20px}
-nav ul li a{color:#fff;text-decoration:none}
+nav ul li a{color:#fff;text-decoration:none;font-size:14px}
 .hamburger{display:none;cursor:pointer}
-.hamburger div{width:25px;height:3px;background:#fff;margin:5px}
+.hamburger div{width:25px;height:3px;background:#fff;margin:4px}
 
 /* HERO */
 .hero{
-  position:relative;
-  height:100vh;
-  overflow:hidden;
+position:relative;height:100vh;overflow:hidden;
 }
 .hero-slide{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  transition:1.5s;
+position:absolute;width:100%;height:100%;
+background-size:cover;background-position:center;
+opacity:0;transition:1.5s;
 }
 .hero-slide.active{opacity:1}
 .hero::after{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,.6);
+content:"";position:absolute;width:100%;height:100%;
+background:rgba(0,0,0,0.6);
 }
 .hero-content{
-  position:relative;
-  z-index:2;
-  color:#fff;
-  top:50%;
-  transform:translateY(-50%);
-  padding:0 40px;
+position:relative;z-index:2;color:#fff;
+top:50%;transform:translateY(-50%);
+max-width:600px;padding:20px;
 }
-.hero h2{font-size:50px;margin-bottom:10px}
-.btn{background:#c49a3a;padding:10px 20px;color:#fff;text-decoration:none}
+.hero h2{font-size:48px;margin-bottom:15px}
+.hero p{margin-bottom:20px}
+.btn{
+background:var(--accent);
+padding:12px 25px;
+color:#fff;text-decoration:none;
+border-radius:5px;
+}
 
 /* SERVICES */
-.services-section{padding:80px 40px;background:#f9f9f9}
-.section-title{text-align:center;margin-bottom:40px;color:#0b3d2e}
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
+.services{background:var(--light)}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
 }
-.service-card{
-  height:350px;
-  overflow:hidden;
-  border-radius:15px;
-  position:relative;
-  animation:zoomSlow 6s infinite alternate;
+.card{
+position:relative;height:320px;
+border-radius:15px;overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+animation:zoom 6s infinite alternate;
 }
-.service-img{
-  width:100%;height:100%;
-  background-size:cover;
-  transition:.6s;
+.card img{
+width:100%;height:100%;object-fit:cover;
+transition:.6s;
 }
-.service-card:hover .service-img{transform:scale(1.2)}
-.service-content{
-  position:absolute;
-  bottom:0;
-  color:#fff;
-  padding:20px;
-  background:linear-gradient(transparent,black);
+.card:hover img{transform:scale(1.2)}
+.card-content{
+position:absolute;bottom:0;color:#fff;
+padding:20px;width:100%;
+background:linear-gradient(transparent,rgba(0,0,0,.8));
 }
 
 /* ZOOM */
-@keyframes zoomSlow{
-  from{transform:scale(1)}
-  to{transform:scale(1.05)}
+@keyframes zoom{
+from{transform:scale(1)}
+to{transform:scale(1.05)}
 }
 
 /* TIMBER */
-.timber-section{padding:80px 40px}
-.timber-wrapper{position:relative;display:flex;align-items:center}
-.timber-slider{
-  display:flex;
-  overflow:hidden;
-  gap:20px;
-  scroll-behavior:smooth;
+.slider-wrap{position:relative}
+.slider{
+display:flex;gap:20px;overflow:hidden;
 }
-.timber-card{
-  min-width:250px;
-  background:#f9f9f9;
-  border-radius:10px;
-  overflow:hidden;
+.timber{
+min-width:250px;background:#fff;
+border-radius:10px;overflow:hidden;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
-.timber-card img{width:100%;height:180px;object-fit:cover}
-.timber-card h3{text-align:center;padding:10px}
-.nav-btn{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background:#0b3d2e;
-  color:#fff;
-  border:none;
-  padding:10px;
-  cursor:pointer;
+.timber img{width:100%;height:180px;object-fit:cover}
+.timber h3{text-align:center;padding:10px}
+.nav{
+position:absolute;top:50%;transform:translateY(-50%);
+background:var(--primary);color:#fff;border:none;
+padding:10px;border-radius:50%;cursor:pointer;
 }
-.left{left:-10px}
-.right{right:-10px}
+.left{left:-10px}.right{right:-10px}
+
+/* STATS */
+.stats{
+background:var(--primary);color:#fff;
+display:flex;justify-content:space-around;
+flex-wrap:wrap;text-align:center;
+}
+.stats div{margin:20px}
+.stats h3{font-size:40px}
+
+/* FOOTER */
+footer{
+background:var(--primary);color:#fff;
+text-align:center;padding:20px;
+}
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  nav ul{display:none;flex-direction:column}
-  nav ul.active{display:flex}
-  .hamburger{display:block}
+nav ul{display:none;flex-direction:column}
+nav ul.active{display:flex;background:var(--primary);padding:10px}
+.hamburger{display:block}
+.hero h2{font-size:32px}
 }
 </style>
 </head>
@@ -146,7 +143,7 @@ nav ul li a{color:#fff;text-decoration:none}
 
 <header>
 <nav>
-<h1>POSKEN</h1>
+<div class="logo">POSKEN</div>
 
 <div class="hamburger" onclick="toggleMenu()">
 <div></div><div></div><div></div>
@@ -165,9 +162,8 @@ nav ul li a{color:#fff;text-decoration:none}
 
 <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e')"></div>
 <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1513828583688-c52646db42da')"></div>
-<div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8')"></div>
 
-<div class="hero-content">
+<div class="hero-content container">
 <h2 id="title">Reliable Timber Solutions</h2>
 <p id="text">High-quality timber supply across Zambia</p>
 <a href="#" class="btn">Get Started</a>
@@ -176,46 +172,60 @@ nav ul li a{color:#fff;text-decoration:none}
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="services-section">
+<section id="services" class="services">
+<div class="container">
 <h2 class="section-title">Our Services</h2>
 
-<div class="services-grid">
-
-<div class="service-card">
-<div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e')"></div>
-<div class="service-content"><h3>Timber Supply</h3></div>
+<div class="grid">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e">
+<div class="card-content"><h3>Timber Supply</h3></div>
 </div>
 
-<div class="service-card">
-<div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1581092160607-ee22621dd758')"></div>
-<div class="service-content"><h3>Hardware</h3></div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758">
+<div class="card-content"><h3>Hardware</h3></div>
 </div>
 
-<div class="service-card">
-<div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1502877338535-766e1452684a')"></div>
-<div class="service-content"><h3>Transport</h3></div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1502877338535-766e1452684a">
+<div class="card-content"><h3>Transport</h3></div>
 </div>
-
+</div>
 </div>
 </section>
 
 <!-- TIMBER -->
-<section id="timber" class="timber-section">
-<h2 class="section-title">Types of Timber</h2>
+<section id="timber">
+<div class="container">
+<h2>Types of Timber</h2>
 
-<div class="timber-wrapper">
-<button class="nav-btn left" onclick="left()">❮</button>
+<div class="slider-wrap">
+<button class="nav left" onclick="left()">❮</button>
 
-<div class="timber-slider" id="slider">
-<div class="timber-card"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e"><h3>Pine</h3></div>
-<div class="timber-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"><h3>Hardwood</h3></div>
-<div class="timber-card"><img src="https://images.unsplash.com/photo-1599493758267-c6c884c7071f"><h3>Teak</h3></div>
-<div class="timber-card"><img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed"><h3>Mahogany</h3></div>
+<div class="slider" id="slider">
+<div class="timber"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e"><h3>Pine</h3></div>
+<div class="timber"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"><h3>Hardwood</h3></div>
+<div class="timber"><img src="https://images.unsplash.com/photo-1599493758267-c6c884c7071f"><h3>Teak</h3></div>
+<div class="timber"><img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed"><h3>Mahogany</h3></div>
 </div>
 
-<button class="nav-btn right" onclick="right()">❯</button>
+<button class="nav right" onclick="right()">❯</button>
+</div>
+
 </div>
 </section>
+
+<!-- STATS -->
+<section class="stats">
+<div><h3 id="c1">0</h3><p>Projects</p></div>
+<div><h3 id="c2">0</h3><p>Clients</p></div>
+<div><h3 id="c3">0</h3><p>Years</p></div>
+</section>
+
+<footer>
+<p>© 2026 POSKEN Investment</p>
+</footer>
 
 <script>
 // MENU
@@ -223,24 +233,33 @@ function toggleMenu(){
 document.getElementById("menu").classList.toggle("active");
 }
 
-// HERO SLIDER
+// HERO
 let slides=document.querySelectorAll(".hero-slide");
-let titles=["Reliable Timber Solutions","Quality Hardware","Transport Services"];
-let texts=["High-quality timber supply","All building materials","Fast logistics"];
-
+let titles=["Reliable Timber Solutions","Quality Hardware"];
+let texts=["High-quality timber supply","All building materials"];
 let i=0;
 setInterval(()=>{
 slides.forEach(s=>s.classList.remove("active"));
-i++; if(i>=slides.length)i=0;
+i++;if(i>=slides.length)i=0;
 slides[i].classList.add("active");
-document.getElementById("title").innerText=titles[i];
-document.getElementById("text").innerText=texts[i];
+title.innerText=titles[i];
+text.innerText=texts[i];
 },5000);
 
-// TIMBER SLIDER
+// SLIDER
 const s=document.getElementById("slider");
 function left(){s.scrollBy({left:-300,behavior:"smooth"})}
 function right(){s.scrollBy({left:300,behavior:"smooth"})}
+
+// COUNTERS
+function count(id,max){
+let el=document.getElementById(id),i=0;
+let int=setInterval(()=>{
+i++;el.innerText=i;
+if(i>=max)clearInterval(int);
+},20);
+}
+count("c1",120);count("c2",80);count("c3",10);
 </script>
 
 </body>
